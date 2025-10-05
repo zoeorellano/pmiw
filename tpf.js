@@ -186,84 +186,84 @@ function decisiones() {
         dibujarBoton(504, 400, "Dejarme absorber");
         dibujarBoton(516, 430, "Sentir la luz");
 
-    } else if (pantallaActual == 7) { /*PANTALLA 3B: RASTRO DIGITAL*/
+    } if (pantallaActual == 7) { /*PANTALLA 3B: RASTRO DIGITAL*/
         dibujarBoton(150, 400, "Abrir nodo");
         dibujarBoton(400, 430, "Guardar información");
 
-    } else if (pantallaActual == 8) { /*PANTALLA 4A: PRIMER INGRESO AL WIRED*/
+    } if (pantallaActual == 8) { /*PANTALLA 4A: PRIMER INGRESO AL WIRED*/
         dibujarBoton(150, 400, "Seguir la voz de Chisa");
         dibujarBoton(400, 430, "Caminar hacia una luz distante");
 
-    } else if (pantallaActual == 9) { /*PANTALLA 4B: CONTACTO SENSORIAL*/
+    } if (pantallaActual == 9) { /*PANTALLA 4B: CONTACTO SENSORIAL*/
         dibujarBoton(150, 400, "Entrar completamente");
         dibujarBoton(400, 430, "Retirar la mano y volver al cuarto");
 
-    } else if (pantallaActual == 10) { /*PANTALLA 4C: RUTA LENTA*/
+    } if (pantallaActual == 10) { /*PANTALLA 4C: RUTA LENTA*/
         dibujarBoton(150, 400, "Anotar el nodo para después");
         dibujarBoton(400, 430, "Dormir y dejar que me invada en sueños");
 
-    } else if (pantallaActual == 11) { /*PANTALLA 5A: ENCUENTRO CON CHISA*/
+    } if (pantallaActual == 11) { /*PANTALLA 5A: ENCUENTRO CON CHISA*/
         dibujarBoton(150, 400, "Creerle y avanzar");
         dibujarBoton(400, 430, "Pedir pruebas, cuestionarla");
 
-    } else if (pantallaActual == 12) { /*PANTALLA 5B: PASAJE ERRANTE*/
+    } if (pantallaActual == 12) { /*PANTALLA 5B: PASAJE ERRANTE*/
         dibujarBoton(150, 400, "Seguir a un avatar brillante");
         dibujarBoton(400, 430, "Buscar una salida");
 
-    } else if (pantallaActual == 13) { /*PANTALLA 5C: INTERFERENCIA EN CASA*/
+    } if (pantallaActual == 13) { /*PANTALLA 5C: INTERFERENCIA EN CASA*/
         dibujarBoton(150, 400, "Revisar el teléfono");
         dibujarBoton(400, 430, "Anotar los símbolos para anotarlos después");
 
-    } else if (pantallaActual == 14) { /*PANTALLA 5D: SUEÑO LÚCIDO*/
+    } if (pantallaActual == 14) { /*PANTALLA 5D: SUEÑO LÚCIDO*/
         dibujarBoton(150, 400, "Seguir los códigos");
         dibujarBoton(400, 430, "Romper el sueño");
 
-    } else if (pantallaActual == 15) { /*PANTALLA 6A: FORO SECRETO DE LOS KNIGHTS*/
+    } if (pantallaActual == 15) { /*PANTALLA 6A: FORO SECRETO DE LOS KNIGHTS*/
         dibujarBoton(150, 400, "Preguntar por Eiri");
         dibujarBoton(400, 430, "Solicitar acceso a su servidor oculto");
 
-    } else if (pantallaActual == 16) { /*PANTALLA 6B: VOCES CONTRADICTORIAS*/
+    } if (pantallaActual == 16) { /*PANTALLA 6B: VOCES CONTRADICTORIAS*/
         dibujarBoton(150, 400, "Seguir a los que prometen libertad");
         dibujarBoton(400, 430, "Seguir a los que advierten peligro");
 
-    } else if (pantallaActual == 17) { /*PANTALLA 6C: SÍMBOLOS EN EL MUNDO REAL*/
+    } if (pantallaActual == 17) { /*PANTALLA 6C: SÍMBOLOS EN EL MUNDO REAL*/
         dibujarBoton(150, 400, "Tocarla");
         dibujarBoton(400, 430, "Dibujarla para investigarla después");
 
-    } else if (pantallaActual == 18) { /*PANTALLA 6D: INVESTIGACIÓN FÍSICA*/
+    } if (pantallaActual == 18) { /*PANTALLA 6D: INVESTIGACIÓN FÍSICA*/
         dibujarBoton(150, 400, "Reconstruir el patrón");
         dibujarBoton(400, 430, "Intentar romper el cuaderno");
 
-    } else if (pantallaActual == 19) { /*PANTALLA 7A: CAMINO DE EXPANSIÓN*/
+    } if (pantallaActual == 19) { /*PANTALLA 7A: CAMINO DE EXPANSIÓN*/
         dibujarBoton(150, 400, "Aceptar la invitación");
         dibujarBoton(400, 430, "Exigir saber el precio");
 
-    } else if (pantallaActual == 20) { /*PANTALLA 7B: NODO PROHIBIDO*/
+    } if (pantallaActual == 20) { /*PANTALLA 7B: NODO PROHIBIDO*/
         dibujarBoton(150, 400, "Investigar la cámara invisible");
         dibujarBoton(400, 430, "Cerrar todo y respirar");
 
-    } else if (pantallaActual == 21) { /*PANTALLA 7C: CAMINO CRÍTICO*/
+    } if (pantallaActual == 21) { /*PANTALLA 7C: CAMINO CRÍTICO*/
         dibujarBoton(150, 400, "Responderle");
         dibujarBoton(400, 430, "Silenciarlo y buscar más pruebas");
 
-    } else if (pantallaActual == 22) { /*PANTALLA 8A: EIRI, EL ARQUITECTO*/
+    } if (pantallaActual == 22) { /*PANTALLA 8A: EIRI, EL ARQUITECTO*/
         dibujarBoton(150, 400, "Aceptar su visión");
         dibujarBoton(400, 430, "Desafiarlo");
 
-    } else if (pantallaActual == 23) { /*PANTALLA 8B: EL DOBLE*/
+    } if (pantallaActual == 23) { /*PANTALLA 8B: EL DOBLE*/
         dibujarBoton(150, 400, "Aceptar que ella soy yo");
         dibujarBoton(400, 430, "Negarla con fuerza");
 
-    } else if (pantallaActual == 24) { /*PANTALLA 8C: RETIRO INSEGURO*/
+    } if (pantallaActual == 24) { /*PANTALLA 8C: RETIRO INSEGURO*/
         dibujarBoton(150, 400, "Desconectar todos los dispositivos");
         dibujarBoton(400, 430, "Seguir las voces una última vez");
 
-    } else if (pantallaActual == 25) { /*PANTALLA 9A: FUSIÓN*/
+    } if (pantallaActual == 25) { /*PANTALLA 9A: FUSIÓN*/
         dibujarBoton(150, 370, "Fundirme con todas las voces");
         dibujarBoton(400, 400, "Quedarme en el mundo que duele");
         dibujarBoton(250, 430, "Borrarme para siempre");
 
-    } else if (pantallaActual == 26) { /*PANTALLA 9B: RESISTENCIA FINAL*/
+    } if (pantallaActual == 26) { /*PANTALLA 9B: RESISTENCIA FINAL*/
         dibujarBoton(500, 370, "Ser todos");
         dibujarBoton(400, 400, "Ser alguien");
         dibujarBoton(250, 430, "No ser");
