@@ -3,6 +3,23 @@ let textos = [];
 let pantallaActual = 0;
 let imagen = [];
 let fuente;
+let tiempoInicio;
+let cantidadDeCirculos = 800;
+let tiempoFinal = 0;
+let tiempoCreditos = 0;
+
+let rangos = [
+    [], [], [0, 0], [2, 3], [5, 6], [8, 9], [11, 14], [16, 17], [19, 20], [22, 24], [26, 27], [29, 30], [32, 35], [37, 38], [40, 43], [45, 48], [50, 51], [53, 54], [56, 57], [59, 61], [63, 65], [67, 69], [71, 76], [78, 79], [81, 82], [84, 85], [87, 88], [90, 94], [96, 98], [100, 102], [104, 107], [109, 112], [114, 118]
+];
+
+let titulos = ["", "creditos", "Presents day... present time...", "El Mensaje", "Carta Digital", "Foro de Rumores", "La Luz", "Rastro Digital",
+    "Primer Ingreso al Wired", "Contacto Sensorial", "Ruta Lenta", "Encuentro con Chisa",
+    "Pasaje Errante", "Interferencia en Casa", "Sueño Lúcido", "Foro Secreto de los Knights",
+    "Voces Contradictorias", "Símbolos en el Mundo Real", "Investigación Física",
+    "Camino de Expansión", "Nodo Prohibido", "Camino Crítico", "Eiri, el Arquitecto",
+    "El Doble", "Retiro Inseguro", "Fusión", "Resistencia Final",
+    "Final Divinidad", "Final Humano", "Final Nada",
+    "Epílogo Ser Todos", "Epílogo Ser Alguien", "Epílogo No Ser"];
 
 function preload() {
     textos = loadStrings("assets/textos.txt");
@@ -10,41 +27,42 @@ function preload() {
 
     marco = loadImage("assets/imagenes/marco.png");
 
-    imagen[0] = loadImage("assets/imagenes/pantalla0.png");
-    imagen[1] = loadImage("assets/imagenes/pantalla1.png");
-    imagen[2] = loadImage("assets/imagenes/pantalla2a.png");
-    imagen[3] = loadImage("assets/imagenes/pantalla2b.png");
-    imagen[4] = loadImage("assets/imagenes/pantalla3a.png");
-    imagen[5] = loadImage("assets/imagenes/pantalla3b.png");
-    imagen[6] = loadImage("assets/imagenes/pantalla4a.png");
-    imagen[7] = loadImage("assets/imagenes/pantalla4b.png");
-    imagen[8] = loadImage("assets/imagenes/pantalla4c.png");
-    imagen[9] = loadImage("assets/imagenes/pantalla5a.png");
-    imagen[10] = loadImage("assets/imagenes/pantalla5b.png");
-    imagen[11] = loadImage("assets/imagenes/pantalla5c.png");
-    imagen[12] = loadImage("assets/imagenes/pantalla5d.png");
-    imagen[13] = loadImage("assets/imagenes/pantalla6a.png");
-    imagen[14] = loadImage("assets/imagenes/pantalla6b.png");
-    imagen[15] = loadImage("assets/imagenes/pantalla6c.png");
-    imagen[16] = loadImage("assets/imagenes/pantalla6d.png");
-    imagen[17] = loadImage("assets/imagenes/pantalla7a.png");
-    imagen[18] = loadImage("assets/imagenes/pantalla7b.png");
-    imagen[19] = loadImage("assets/imagenes/pantalla7c.png");
-    imagen[20] = loadImage("assets/imagenes/pantalla8a.png");
-    imagen[21] = loadImage("assets/imagenes/pantalla8b.png");
-    imagen[22] = loadImage("assets/imagenes/pantalla8c.png");
-    imagen[23] = loadImage("assets/imagenes/pantalla9a.png");
-    imagen[24] = loadImage("assets/imagenes/pantalla9b.png");
-    imagen[25] = loadImage("assets/imagenes/pantalla10a.png");
-    imagen[26] = loadImage("assets/imagenes/pantalla10b.png");
-    imagen[27] = loadImage("assets/imagenes/pantalla10c.png");
-    imagen[28] = loadImage("assets/imagenes/pantalla11a.png");
-    imagen[29] = loadImage("assets/imagenes/pantalla11b.png");
-    imagen[30] = loadImage("assets/imagenes/pantalla11c.png");
+    imagen[2] = loadImage("assets/imagenes/pantalla0.png");
+    imagen[3] = loadImage("assets/imagenes/pantalla1.png");
+    imagen[4] = loadImage("assets/imagenes/pantalla2a.png");
+    imagen[5] = loadImage("assets/imagenes/pantalla2b.png");
+    imagen[6] = loadImage("assets/imagenes/pantalla3a.png");
+    imagen[7] = loadImage("assets/imagenes/pantalla3b.png");
+    imagen[8] = loadImage("assets/imagenes/pantalla4a.png");
+    imagen[9] = loadImage("assets/imagenes/pantalla4b.png");
+    imagen[10] = loadImage("assets/imagenes/pantalla4c.png");
+    imagen[11] = loadImage("assets/imagenes/pantalla5a.png");
+    imagen[12] = loadImage("assets/imagenes/pantalla5b.png");
+    imagen[13] = loadImage("assets/imagenes/pantalla5c.png");
+    imagen[14] = loadImage("assets/imagenes/pantalla5d.png");
+    imagen[15] = loadImage("assets/imagenes/pantalla6a.png");
+    imagen[16] = loadImage("assets/imagenes/pantalla6b.png");
+    imagen[17] = loadImage("assets/imagenes/pantalla6c.png");
+    imagen[18] = loadImage("assets/imagenes/pantalla6d.png");
+    imagen[19] = loadImage("assets/imagenes/pantalla7a.png");
+    imagen[20] = loadImage("assets/imagenes/pantalla7b.png");
+    imagen[21] = loadImage("assets/imagenes/pantalla7c.png");
+    imagen[22] = loadImage("assets/imagenes/pantalla8a.png");
+    imagen[23] = loadImage("assets/imagenes/pantalla8b.png");
+    imagen[24] = loadImage("assets/imagenes/pantalla8c.png");
+    imagen[25] = loadImage("assets/imagenes/pantalla9a.png");
+    imagen[26] = loadImage("assets/imagenes/pantalla9b.png");
+    imagen[27] = loadImage("assets/imagenes/pantalla10a.png");
+    imagen[28] = loadImage("assets/imagenes/pantalla10b.png");
+    imagen[29] = loadImage("assets/imagenes/pantalla10c.png");
+    imagen[30] = loadImage("assets/imagenes/pantalla11a.png");
+    imagen[31] = loadImage("assets/imagenes/pantalla11b.png");
+    imagen[32] = loadImage("assets/imagenes/pantalla11c.png");
 }
 
 function setup() {
     createCanvas(640, 480);
+    tiempoInicio = millis();
 }
 
 function draw() {
@@ -58,156 +76,71 @@ function draw() {
     textSize(16);
     fill(0);
 
-    if (pantallaActual != 0) {
+    if (pantallaActual != 0 && pantallaActual != 1 && pantallaActual != 2) {
         image(marco, 0, 0, 640, 480);
     }
-
-
+    if (pantallaActual == 1) {
+        mostrarCreditos();
+    }
     mostrarTextoEnPantalla(pantallaActual);
+    mostrarTitulos(pantallaActual);
     decisiones();
-
+    ruidoBlanco();
 }
 
-function mostrarTextoEnPantalla(pantalla) { /*asigna el rango de líneas del arreglo textos que se muestra en cada pantalla*/
-    console.log(textos);
-    let primeraLinea = 0;
-    let ultimaLinea = 118;
+function ruidoBlanco() {
+    if (pantallaActual == 0) {
+        for (let i = 0; i < cantidadDeCirculos; i++) {
+            let x = random(width);
+            let y = random(height);
+            let gris = random(150, 255);
+            fill(gris, random(100, 255));
+            let tamaño = random(1, 4);
+            ellipse(x, y, tamaño);
+        }
 
-    if (pantalla == 0) {
-        primeraLinea = 0;
-        ultimaLinea = 0;
+        if (millis() - tiempoInicio > 3000) {
+            pantallaActual = 1;/*cuenta progresiva desde que empieza hasta que cierra el programa*/
+        }
     }
-    else if (pantalla == 1) {
-        primeraLinea = 2;
-        ultimaLinea = 3;
-    }
-    else if (pantalla == 2) {
-        primeraLinea = 5;
-        ultimaLinea = 6;
-    }
-    else if (pantalla == 3) {
-        primeraLinea = 8;
-        ultimaLinea = 9;
-    }
-    else if (pantalla == 4) {
-        primeraLinea = 11;
-        ultimaLinea = 14;
-    }
-    else if (pantalla == 5) {
-        primeraLinea = 16;
-        ultimaLinea = 17;
-    }
-    else if (pantalla == 6) {
-        primeraLinea = 19;
-        ultimaLinea = 20;
-    }
-    else if (pantalla == 7) {
-        primeraLinea = 22;
-        ultimaLinea = 24;
-    }
-    else if (pantalla == 8) {
-        primeraLinea = 26;
-        ultimaLinea = 27;
-    }
-    else if (pantalla == 9) {
-        primeraLinea = 29;
-        ultimaLinea = 30;
-    }
-    else if (pantalla == 10) {
-        primeraLinea = 32;
-        ultimaLinea = 35;
-    }
-    else if (pantalla == 11) {
-        primeraLinea = 37;
-        ultimaLinea = 38;
-    }
-    else if (pantalla == 12) {
-        primeraLinea = 40;
-        ultimaLinea = 43;
-    }
-    else if (pantalla == 13) {
-        primeraLinea = 45;
-        ultimaLinea = 48;
-    }
-    else if (pantalla == 14) {
-        primeraLinea = 50;
-        ultimaLinea = 51;
-    }
-    else if (pantalla == 15) {
-        primeraLinea = 53;
-        ultimaLinea = 54;
-    }
-    else if (pantalla == 16) {
-        primeraLinea = 56;
-        ultimaLinea = 57;
-    }
-    else if (pantalla == 17) {
-        primeraLinea = 59;
-        ultimaLinea = 61;
-    }
-    else if (pantalla == 18) {
-        primeraLinea = 63;
-        ultimaLinea = 65;
-    }
-    else if (pantalla == 19) {
-        primeraLinea = 67;
-        ultimaLinea = 69;
-    }
-    else if (pantalla == 20) {
-        primeraLinea = 71;
-        ultimaLinea = 76;
-    }
-    else if (pantalla == 21) {
-        primeraLinea = 78;
-        ultimaLinea = 79;
-    }
-    else if (pantalla == 22) {
-        primeraLinea = 81;
-        ultimaLinea = 82;
-    }
-    else if (pantalla == 23) {
-        primeraLinea = 84;
-        ultimaLinea = 85;
-    }
-    else if (pantalla == 24) {
-        primeraLinea = 87;
-        ultimaLinea = 88;
-    }
-    else if (pantalla == 25) {
-        primeraLinea = 90;
-        ultimaLinea = 94;
-    }
-    else if (pantalla == 26) {
-        primeraLinea = 96;
-        ultimaLinea = 98;
-    }
-    else if (pantalla == 27) {
-        primeraLinea = 100;
-        ultimaLinea = 102;
-    }
-    else if (pantalla == 28) {
-        primeraLinea = 104;
-        ultimaLinea = 107;
-    }
-    else if (pantalla == 29) {
-        primeraLinea = 109;
-        ultimaLinea = 112;
-    }
-    else if (pantalla == 30) {
-        primeraLinea = 114;
-        ultimaLinea = 118;
-    }
+}
 
+function mostrarTitulos(pantalla) {
+    let titulo = titulos[pantalla];
+
+    textSize(18);
+    text(titulo, width / 2, 20);
+}
+
+
+function mostrarCreditos() {
+    console.log(mostrarCreditos);
+    fill(255);
+    text("zoe ailin", 50, 50);
+
+    if (tiempoCreditos == 0) { /*si tiempo creditos no fue llamado empieza a contar el millis desde aca */
+        tiempoCreditos = millis();
+    }
+    if (millis() - tiempoCreditos > 3000) { /*si pasaron 3 segundos, la pantalla actual se cambio y el tiempo credito vuelve a cero para cuando se reinicie la aventura*/
+        pantallaActual = 2;
+        tiempoCreditos = 0;
+    }
+}
+
+
+
+function mostrarTextoEnPantalla(pantalla) {
+    let rangoDeTextos = rangos[pantalla];
     let x = 29;
     let y = 399;
-    let alturaDeLinea = 10;
+    let alturaDeLinea = 14;
     let anchoMaximo = width - 29 * 2;
 
     textAlign(LEFT, TOP);
 
-    for (let i = primeraLinea; i <= ultimaLinea; i++) {/*se usa un for para dibujar cada linea con text() y va bajando eje y con altura de linea para la siguiente */
+    for (let i = rangoDeTextos[0]; i <= rangoDeTextos[1]; i++) {
         if (textos[i]) {
-            text(textos[i], x, y, anchoMaximo, alturaDeLinea); /*dibuja el texto dentro de un rectangulo de texto que hace wrap*/
+            text(textos[i], x, y, anchoMaximo, alturaDeLinea);
             y += alturaDeLinea;
         }
     }
@@ -231,130 +164,476 @@ function dibujarBoton(x, y, textos) {
 }
 
 function decisiones() {
-    if (pantallaActual == 0) {
-        dibujarBoton(400 , 400, "Comenzar");
-        dibujarBoton(400, 430, "Créditos");
-
-    } else if (pantallaActual == 1) {/*PANTALLA 1: EL MENSAJE*/
+    if (pantallaActual == 2) {
+        dibujarBoton(400, 400, "Comenzar");
+    }
+    if (pantallaActual == 3) {/*PANTALLA 1: EL MENSAJE*/
         dibujarBoton(510, 400, "Abrir mensaje");
         dibujarBoton(500, 430, "Buscar en foros");
 
-    } else if (pantallaActual == 2) {/*PANTALLA 2A: CARTA DIGITAL*/
+    }
+    if (pantallaActual == 4) {/*PANTALLA 2A: CARTA DIGITAL*/
         dibujarBoton(518, 400, "¿Dónde estas?");
         dibujarBoton(530, 430, "Rastrear IP");
 
-    } else if (pantallaActual == 3) { /*PANTALLA 2B: FORO DE RUMORES*/
+    }
+    if (pantallaActual == 5) { /*PANTALLA 2B: FORO DE RUMORES*/
         dibujarBoton(501, 400, "Contactar al usuario");
         dibujarBoton(487, 430, "Descargar archivo");
 
-    } else if (pantallaActual == 4) { /*PANTALLA 3A: LA LUZ*/
+    }
+    if (pantallaActual == 6) { /*PANTALLA 3A: LA LUZ*/
         dibujarBoton(504, 400, "Dejarme absorber");
         dibujarBoton(516, 430, "Sentir la luz");
 
-    } else if (pantallaActual == 5) { /*PANTALLA 3B: RASTRO DIGITAL*/
+    } else if (pantallaActual == 7) { /*PANTALLA 3B: RASTRO DIGITAL*/
         dibujarBoton(150, 400, "Abrir nodo");
         dibujarBoton(400, 430, "Guardar información");
 
-    } else if (pantallaActual == 6) { /*PANTALLA 4A: PRIMER INGRESO AL WIRED*/
+    } else if (pantallaActual == 8) { /*PANTALLA 4A: PRIMER INGRESO AL WIRED*/
         dibujarBoton(150, 400, "Seguir la voz de Chisa");
         dibujarBoton(400, 430, "Caminar hacia una luz distante");
 
-    } else if (pantallaActual == 7) { /*PANTALLA 4B: CONTACTO SENSORIAL*/
+    } else if (pantallaActual == 9) { /*PANTALLA 4B: CONTACTO SENSORIAL*/
         dibujarBoton(150, 400, "Entrar completamente");
         dibujarBoton(400, 430, "Retirar la mano y volver al cuarto");
 
-    } else if (pantallaActual == 8) { /*PANTALLA 4C: RUTA LENTA*/
+    } else if (pantallaActual == 10) { /*PANTALLA 4C: RUTA LENTA*/
         dibujarBoton(150, 400, "Anotar el nodo para después");
         dibujarBoton(400, 430, "Dormir y dejar que me invada en sueños");
 
-    } else if (pantallaActual == 9) { /*PANTALLA 5A: ENCUENTRO CON CHISA*/
+    } else if (pantallaActual == 11) { /*PANTALLA 5A: ENCUENTRO CON CHISA*/
         dibujarBoton(150, 400, "Creerle y avanzar");
         dibujarBoton(400, 430, "Pedir pruebas, cuestionarla");
 
-    } else if (pantallaActual == 10) { /*PANTALLA 5B: PASAJE ERRANTE*/
+    } else if (pantallaActual == 12) { /*PANTALLA 5B: PASAJE ERRANTE*/
         dibujarBoton(150, 400, "Seguir a un avatar brillante");
         dibujarBoton(400, 430, "Buscar una salida");
 
-    } else if (pantallaActual == 11) { /*PANTALLA 5C: INTERFERENCIA EN CASA*/
+    } else if (pantallaActual == 13) { /*PANTALLA 5C: INTERFERENCIA EN CASA*/
         dibujarBoton(150, 400, "Revisar el teléfono");
         dibujarBoton(400, 430, "Anotar los símbolos para anotarlos después");
 
-    } else if (pantallaActual == 12) { /*PANTALLA 5D: SUEÑO LÚCIDO*/
+    } else if (pantallaActual == 14) { /*PANTALLA 5D: SUEÑO LÚCIDO*/
         dibujarBoton(150, 400, "Seguir los códigos");
         dibujarBoton(400, 430, "Romper el sueño");
 
-    } else if (pantallaActual == 13) { /*PANTALLA 6A: FORO SECRETO DE LOS KNIGHTS*/
+    } else if (pantallaActual == 15) { /*PANTALLA 6A: FORO SECRETO DE LOS KNIGHTS*/
         dibujarBoton(150, 400, "Preguntar por Eiri");
         dibujarBoton(400, 430, "Solicitar acceso a su servidor oculto");
 
-    } else if (pantallaActual == 14) { /*PANTALLA 6B: VOCES CONTRADICTORIAS*/
+    } else if (pantallaActual == 16) { /*PANTALLA 6B: VOCES CONTRADICTORIAS*/
         dibujarBoton(150, 400, "Seguir a los que prometen libertad");
         dibujarBoton(400, 430, "Seguir a los que advierten peligro");
 
-    } else if (pantallaActual == 15) { /*PANTALLA 6C: SÍMBOLOS EN EL MUNDO REAL*/
+    } else if (pantallaActual == 17) { /*PANTALLA 6C: SÍMBOLOS EN EL MUNDO REAL*/
         dibujarBoton(150, 400, "Tocarla");
         dibujarBoton(400, 430, "Dibujarla para investigarla después");
 
-    } else if (pantallaActual == 16) { /*PANTALLA 6D: INVESTIGACIÓN FÍSICA*/
+    } else if (pantallaActual == 18) { /*PANTALLA 6D: INVESTIGACIÓN FÍSICA*/
         dibujarBoton(150, 400, "Reconstruir el patrón");
         dibujarBoton(400, 430, "Intentar romper el cuaderno");
 
-    } else if (pantallaActual == 17) { /*PANTALLA 7A: CAMINO DE EXPANSIÓN*/
+    } else if (pantallaActual == 19) { /*PANTALLA 7A: CAMINO DE EXPANSIÓN*/
         dibujarBoton(150, 400, "Aceptar la invitación");
         dibujarBoton(400, 430, "Exigir saber el precio");
 
-    } else if (pantallaActual == 18) { /*PANTALLA 7B: NODO PROHIBIDO*/
+    } else if (pantallaActual == 20) { /*PANTALLA 7B: NODO PROHIBIDO*/
         dibujarBoton(150, 400, "Investigar la cámara invisible");
         dibujarBoton(400, 430, "Cerrar todo y respirar");
 
-    } else if (pantallaActual == 19) { /*PANTALLA 7C: CAMINO CRÍTICO*/
+    } else if (pantallaActual == 21) { /*PANTALLA 7C: CAMINO CRÍTICO*/
         dibujarBoton(150, 400, "Responderle");
         dibujarBoton(400, 430, "Silenciarlo y buscar más pruebas");
 
-    } else if (pantallaActual == 20) { /*PANTALLA 8A: EIRI, EL ARQUITECTO*/
+    } else if (pantallaActual == 22) { /*PANTALLA 8A: EIRI, EL ARQUITECTO*/
         dibujarBoton(150, 400, "Aceptar su visión");
         dibujarBoton(400, 430, "Desafiarlo");
 
-    } else if (pantallaActual == 21) { /*PANTALLA 8B: EL DOBLE*/
+    } else if (pantallaActual == 23) { /*PANTALLA 8B: EL DOBLE*/
         dibujarBoton(150, 400, "Aceptar que ella soy yo");
         dibujarBoton(400, 430, "Negarla con fuerza");
 
-    } else if (pantallaActual == 22) { /*PANTALLA 8C: RETIRO INSEGURO*/
+    } else if (pantallaActual == 24) { /*PANTALLA 8C: RETIRO INSEGURO*/
         dibujarBoton(150, 400, "Desconectar todos los dispositivos");
         dibujarBoton(400, 430, "Seguir las voces una última vez");
 
-    } else if (pantallaActual == 23) { /*PANTALLA 9A: FUSIÓN*/
+    } else if (pantallaActual == 25) { /*PANTALLA 9A: FUSIÓN*/
         dibujarBoton(150, 370, "Fundirme con todas las voces");
         dibujarBoton(400, 400, "Quedarme en el mundo que duele");
         dibujarBoton(250, 430, "Borrarme para siempre");
 
-    } else if (pantallaActual == 24) { /*PANTALLA 9B: RESISTENCIA FINAL*/
+    } else if (pantallaActual == 26) { /*PANTALLA 9B: RESISTENCIA FINAL*/
         dibujarBoton(500, 370, "Ser todos");
         dibujarBoton(400, 400, "Ser alguien");
         dibujarBoton(250, 430, "No ser");
 
-    } else if (pantallaActual == 25) { /*PANTALLA 10A: FINAL DIVINIDAD*/
-        dibujarBoton(500, 400, "Ser todos");
+    } else if (pantallaActual == 27) { /*PANTALLA 10A: FINAL DIVINIDAD*/
+        if (tiempoFinal == 0) {
+            tiempoFinal = millis();
+        }
+        if (millis() - tiempoFinal > 10000) {
+            pantallaActual = 30;
+            tiempoFinal = 0;
+        }
 
-    } else if (pantallaActual == 26) { /*PANTALLA 10B: FINAL HUMANO*/
-        dibujarBoton(150, 400, "Ser alguien");
+    } else if (pantallaActual == 28) { /*PANTALLA 10B: FINAL HUMANO*/
+        if (tiempoFinal == 0) {
+            tiempoFinal = millis();
+        }
+        if (millis() - tiempoFinal > 10000) {
+            pantallaActual = 31;
+            tiempoFinal = 0
+        }
 
-    } else if (pantallaActual == 27) { /*PANTALLA 10C: FINAL NADA*/
-        dibujarBoton(150, 400, "No ser");
+    } else if (pantallaActual == 29) { /*PANTALLA 10C: FINAL NADA*/
+        if (tiempoFinal == 0) {
+            tiempoFinal = millis();
+        }
+        if (millis() - tiempoFinal > 10000) {
+            pantallaActual = 32;
+            tiempoFinal = 0
+        }
+    } else if (pantallaActual == 30) { /*PANTALLA 11A: EPÍLOGO SER TODOS*/
+        if (tiempoFinal == 0) {
+            tiempoFinal = millis();
+        }
+        if (millis() - tiempoFinal > 10000) {
+            pantallaActual = 0;
+            tiempoFinal = 0
 
-    } else if (pantallaActual == 28) { /*PANTALLA 11A: EPÍLOGO SER TODOS*/
-        dibujarBoton(500, 400, "Ser todos");
+        }
+    } else if (pantallaActual == 31) { /*PANTALLA 11B: EPÍLOGO SER ALGUIEN*/
+        if (tiempoFinal == 0) {
+            tiempoFinal = millis();
+        }
+        if (millis() - tiempoFinal > 10000) {
+            pantallaActual = 0;
+            tiempoFinal = 0
 
-    } else if (pantallaActual == 29) { /*PANTALLA 11B: EPÍLOGO SER ALGUIEN*/
-        dibujarBoton(150, 400, "Ser alguien");
 
-    } else if (pantallaActual == 30) { /*PANTALLA 10C: EPÍLOGO NO SER*/
-        image(imagen[pantallaActual], 0, 0, width, height);
+        }
+    } else if (pantallaActual == 32) { /*PANTALLA 10C: EPÍLOGO NO SER*/
+        if (tiempoFinal == 0) {
+            tiempoFinal = millis();
+        }
+        if (millis() - tiempoFinal > 10000) {
+            pantallaActual = 0;
+            tiempoFinal = 0
+        }
     }
 }
+
 
 
 function botonClick(x, y, w, h) {/*función booleana que verifica si el cursor está dentro del boton (x,y,w,h) es true si se hace click*/
     return mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h;
 }
+
+function mousePressed() {
+    // PANTALLA 2: MAIN MENU
+    if (pantallaActual == 2) {
+        if (botonClick(400, 400, 150, 50)) { // "Comenzar" -> EL MENSAJE
+            pantallaActual = 3;
+            return;
+        }
+    }
+
+    // PANTALLA 1: EL MENSAJE (3)
+    if (pantallaActual == 3) {
+        if (botonClick(510, 400, 150, 50)) { // "Abrir mensaje" -> 2A
+            pantallaActual = 4;
+            return;
+        }
+        if (botonClick(500, 430, 150, 50)) { // "Buscar en foros" -> 2B
+            pantallaActual = 5;
+            return;
+        }
+    }
+
+    // PANTALLA 2A: CARTA DIGITAL (4)
+    if (pantallaActual == 4) {
+        if (botonClick(518, 400, 150, 50)) { // "¿Dónde estás?" -> 3A (La Luz)
+            pantallaActual = 6;
+            return;
+        }
+        if (botonClick(530, 430, 150, 50)) { // "Rastrear IP" -> 3B (Rastro Digital)
+            pantallaActual = 7;
+            return;
+        }
+    }
+
+    // PANTALLA 2B: FORO DE RUMORES (5)
+    if (pantallaActual == 5) {
+        if (botonClick(501, 400, 150, 50)) { // "Contactar al usuario" -> 3B
+            pantallaActual = 7;
+            return;
+        }
+        if (botonClick(487, 430, 150, 50)) { // "Descargar archivo" -> 3A
+            pantallaActual = 6;
+            return;
+        }
+    }
+
+    // PANTALLA 3A: LA LUZ (6)
+    if (pantallaActual == 6) {
+        if (botonClick(504, 400, 150, 50)) { // "Dejarme absorber" -> 4A
+            pantallaActual = 8;
+            return;
+        }
+        if (botonClick(516, 430, 150, 50)) { // "Sentir la luz" -> 4B
+            pantallaActual = 9;
+            return;
+        }
+    }
+
+    // PANTALLA 3B: RASTRO DIGITAL (7)
+    if (pantallaActual == 7) {
+        if (botonClick(150, 400, 150, 50)) { // "Abrir nodo" -> 4A
+            pantallaActual = 8;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Guardar información" -> 4C
+            pantallaActual = 10;
+            return;
+        }
+    }
+
+    // PANTALLA 4A: PRIMER INGRESO AL WIRED (8)
+    if (pantallaActual == 8) {
+        if (botonClick(150, 400, 150, 50)) { // "Seguir la voz de Chisa" -> 5A
+            pantallaActual = 11;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Caminar hacia una luz distante" -> 5B
+            pantallaActual = 12;
+            return;
+        }
+    }
+
+    // PANTALLA 4B: CONTACTO SENSORIAL (9)
+    if (pantallaActual == 9) {
+        if (botonClick(150, 400, 150, 50)) { // "Entrar completamente" -> 5A
+            pantallaActual = 11;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Retirar la mano..." -> 5C
+            pantallaActual = 13;
+            return;
+        }
+    }
+
+    // PANTALLA 4C: RUTA LENTA (10)
+    if (pantallaActual == 10) {
+        if (botonClick(150, 400, 150, 50)) { // "Anotar el nodo..." -> 5C
+            pantallaActual = 13;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Dormir..." -> 5D
+            pantallaActual = 14;
+            return;
+        }
+    }
+
+    // PANTALLA 5A: ENCUENTRO CON CHISA (11)
+    if (pantallaActual == 11) {
+        if (botonClick(150, 400, 150, 50)) { // "Creerle y avanzar" -> 6A
+            pantallaActual = 15;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Pedir pruebas..." -> 6B
+            pantallaActual = 16;
+            return;
+        }
+    }
+
+    // PANTALLA 5B: PASAJE ERRANTE (12)
+    if (pantallaActual == 12) {
+        if (botonClick(150, 400, 150, 50)) { // "Seguir a un avatar brillante" -> 6B
+            pantallaActual = 16;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Buscar una salida" -> 6C
+            pantallaActual = 17;
+            return;
+        }
+    }
+
+    // PANTALLA 5C: INTERFERENCIA EN CASA (13)
+    if (pantallaActual == 13) {
+        if (botonClick(150, 400, 150, 50)) { // "Revisar el teléfono" -> 6C
+            pantallaActual = 17;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Anotar los símbolos..." -> 6D
+            pantallaActual = 18;
+            return;
+        }
+    }
+
+    // PANTALLA 5D: SUEÑO LÚCIDO (14)
+    if (pantallaActual == 14) {
+        if (botonClick(150, 400, 150, 50)) { // "Seguir los códigos" -> 6A
+            pantallaActual = 15;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Romper el sueño" -> 6C
+            pantallaActual = 17;
+            return;
+        }
+    }
+
+    // PANTALLA 6A: FORO SECRETO DE LOS KNIGHTS (15)
+    if (pantallaActual == 15) {
+        if (botonClick(150, 400, 150, 50)) { // "Preguntar por Eiri" -> 7A
+            pantallaActual = 19;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Solicitar acceso..." -> 7B
+            pantallaActual = 20;
+            return;
+        }
+    }
+
+    // PANTALLA 6B: VOCES CONTRADICTORIAS (16)
+    if (pantallaActual == 16) {
+        if (botonClick(150, 400, 150, 50)) { // "Seguir a los que prometen libertad" -> 7A
+            pantallaActual = 19;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Seguir a los que advierten peligro" -> 7C
+            pantallaActual = 21;
+            return;
+        }
+    }
+
+    // PANTALLA 6C: SÍMBOLOS EN EL MUNDO REAL (17)
+    if (pantallaActual == 17) {
+        if (botonClick(150, 400, 150, 50)) { // "Tocarla" -> 7B
+            pantallaActual = 20;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Dibujarla..." -> 7C
+            pantallaActual = 21;
+            return;
+        }
+    }
+
+    // PANTALLA 6D: INVESTIGACIÓN FÍSICA (18)
+    if (pantallaActual == 18) {
+        if (botonClick(150, 400, 150, 50)) { // "Reconstruir el patrón" -> 7C
+            pantallaActual = 21;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Intentar romper el cuaderno" -> 7B
+            pantallaActual = 20;
+            return;
+        }
+    }
+
+    // PANTALLA 7A: CAMINO DE EXPANSIÓN (19)
+    if (pantallaActual == 19) {
+        if (botonClick(150, 400, 150, 50)) { // "Aceptar la invitación" -> 8A
+            pantallaActual = 22;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Exigir saber el precio" -> 8B
+            pantallaActual = 23;
+            return;
+        }
+    }
+
+    // PANTALLA 7B: NODO PROHIBIDO (20)
+    if (pantallaActual == 20) {
+        if (botonClick(150, 400, 150, 50)) { // "Investigar la cámara invisible" -> 8B
+            pantallaActual = 23;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Cerrar todo y respirar" -> 8C
+            pantallaActual = 24;
+            return;
+        }
+    }
+
+    // PANTALLA 7C: CAMINO CRÍTICO (21)
+    if (pantallaActual == 21) {
+        if (botonClick(150, 400, 150, 50)) { // "Responderle" -> 8B
+            pantallaActual = 23;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Silenciarlo..." -> 8C
+            pantallaActual = 24;
+            return;
+        }
+    }
+
+    // PANTALLA 8A: EIRI, EL ARQUITECTO (22)
+    if (pantallaActual == 22) {
+        if (botonClick(150, 400, 150, 50)) { // "Aceptar su visión" -> 9A
+            pantallaActual = 25;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Desafiarlo" -> 9B
+            pantallaActual = 26;
+            return;
+        }
+    }
+
+    // PANTALLA 8B: EL DOBLE (23)
+    if (pantallaActual == 23) {
+        if (botonClick(150, 400, 150, 50)) { // "Aceptar que ella soy yo" -> 9A
+            pantallaActual = 25;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Negarla con fuerza" -> 9B
+            pantallaActual = 26;
+            return;
+        }
+    }
+
+    // PANTALLA 8C: RETIRO INSEGURO (24)
+    if (pantallaActual == 24) {
+        if (botonClick(150, 400, 150, 50)) { // "Desconectar todos los dispositivos" -> 9B
+            pantallaActual = 26;
+            return;
+        }
+        if (botonClick(400, 430, 150, 50)) { // "Seguir las voces una última vez" -> 9A
+            pantallaActual = 25;
+            return;
+        }
+    }
+
+    // PANTALLA 9A: FUSIÓN (25)
+    if (pantallaActual == 25) {
+        if (botonClick(150, 370, 150, 50)) { // "Fundirme con todas las voces" -> Final Divinidad
+            pantallaActual = 27;
+            return;
+        }
+        if (botonClick(400, 400, 150, 50)) { // "Quedarme..." -> Final Humano
+            pantallaActual = 28;
+            return;
+        }
+        if (botonClick(250, 430, 150, 50)) { // "Borrarme para siempre" -> Final Nada
+            pantallaActual = 29;
+            return;
+        }
+    }
+
+    // PANTALLA 9B: RESISTENCIA FINAL (26)
+    if (pantallaActual == 26) {
+        if (botonClick(500, 370, 150, 50)) { // "Ser todos" -> Final Divinidad
+            pantallaActual = 27;
+            return;
+        }
+        if (botonClick(400, 400, 150, 50)) { // "Ser alguien" -> Final Humano
+            pantallaActual = 28;
+            return;
+        }
+        if (botonClick(250, 430, 150, 50)) { // "No ser" -> Final Nada
+            pantallaActual = 29;
+            return;
+        }
+    }
+}
+
 
