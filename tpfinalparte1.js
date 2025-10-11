@@ -1,3 +1,10 @@
+/*COMISION 2*/
+/*ZOE ORELLANO Y ESTEFANIA RAFFAELLI*/
+/*DIAGRAMA*/
+/*https://miro.com/welcomeonboard/RnlRak5DNzhsVFA2U3EveTZiZUJEazRYRTNJYnZXSWIyME8zeTdFYnNyMC9LUHZweWV4Uk9SakFlYUJkWXdjNngrVkFhMVVnRm1UbGI5Wm1XRFo5QXp6dDFONFJzR2lQcGdoNElRYm51Q0RQRTI3ZDJIYTBUcTU4MVZZdzAzK29NakdSWkpBejJWRjJhRnhhb1UwcS9BPT0hdjE=?share_link_id=689241050362*/
+/*VIDEO*/
+/*INSERTAR VIDEO*/
+
 let marco;
 let textos = [];
 let pantallaActual = 0;
@@ -112,7 +119,7 @@ function ruidoBlanco() {
         }
 
         if (millis() - tiempoInicio > 5500) {
-            pantallaActual = 1;/*cuenta progresiva desde que empieza hasta que cierra el programa*/
+            pantallaActual = 1;
         }
     }
 }
@@ -144,10 +151,10 @@ function introCreditos() {
     textAlign(CENTER, CENTER);
 
     text("Trabajo realizado por:\n" + "Zoe Orellano y Estefania Raffaelli.\n" + "Comision 2.\n" + "Docente:\n" + "Matias Jauregui Lorda.\n" + "Agradecimiento especial:\n" + "A Diego :)\n", width / 2, height / 2);
-    if (tiempoIntroCreditos == 0) { /*si tiempo creditos no fue llamado empieza a contar el millis desde aca */
+    if (tiempoIntroCreditos == 0) { 
         tiempoIntroCreditos = millis();
     }
-    if (millis() - tiempoIntroCreditos > 5000) { /*si pasaron 3 segundos, la pantalla actual se cambio y el tiempo credito vuelve a cero para cuando se reinicie la aventura*/
+    if (millis() - tiempoIntroCreditos > 5000) { 
         pantallaActual = 2;
         tiempoIntroCreditos = 0;
     }
@@ -403,8 +410,6 @@ function decisiones() {
 }
 
 function botonClick(x, y, texto) {
-    /*función booleana que verifica si el cursor está dentro del boton (x,y,w,h) es true si se hace click*/
-    /* x,y son las coordenadas del boton, texto es el texto que tiene el boton*/
 
     let paddingX = 10;
     let paddingY = 5;
