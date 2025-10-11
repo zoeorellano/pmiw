@@ -10,6 +10,7 @@ let tiempoIntroCreditos = 0;
 let tiempoCreditosFinales = 0;
 let intro;
 let ruiditoz;
+let cancionCreditos;
 
 let rangos = [
     [], [], [0, 2], [4, 5], [7, 8], [10, 11], [13, 16], [18, 19], [21, 22], [24, 26], [28, 29], [31, 32], [34, 37], [39, 40], [42, 45], [47, 50], [52, 53], [55, 56], [58, 59], [61, 63], [65, 67], [69, 71], [73, 78], [80, 81], [83, 84], [86, 87], [89, 90], [92, 96], [98, 100], [102, 104], [106, 109], [111, 114], [116, 120], []
@@ -29,40 +30,40 @@ function preload() {
     fuente = loadFont("assets/coderscrux.ttf");
     intro = loadSound("assets/sonido/intro.mp3");
     ruiditoz = loadSound("assets/sonido/ruiditoz.mp3");
+    cancionCreditos = loadSound("assets/sonido/megalomaniac.mp3");
+    marco = loadImage("assets/imagenez/marco.png");
 
-    marco = loadImage("assets/imagenes/marco.png");
-
-    imagen[2] = loadImage("assets/imagenes/pantalla0.png");
-    imagen[3] = loadImage("assets/imagenes/pantalla1.png");
-    imagen[4] = loadImage("assets/imagenes/pantalla2a.png");
-    imagen[5] = loadImage("assets/imagenes/pantalla2b.png");
-    imagen[6] = loadImage("assets/imagenes/pantalla3a.png");
-    imagen[7] = loadImage("assets/imagenes/pantalla3b.png");
-    imagen[8] = loadImage("assets/imagenes/pantalla4a.png");
-    imagen[9] = loadImage("assets/imagenes/pantalla4b.png");
-    imagen[10] = loadImage("assets/imagenes/pantalla4c.png");
-    imagen[11] = loadImage("assets/imagenes/pantalla5a.png");
-    imagen[12] = loadImage("assets/imagenes/pantalla5b.png");
-    imagen[13] = loadImage("assets/imagenes/pantalla5c.png");
-    imagen[14] = loadImage("assets/imagenes/pantalla5d.png");
-    imagen[15] = loadImage("assets/imagenes/pantalla6a.png");
-    imagen[16] = loadImage("assets/imagenes/pantalla6b.png");
-    imagen[17] = loadImage("assets/imagenes/pantalla6c.png");
-    imagen[18] = loadImage("assets/imagenes/pantalla6d.png");
-    imagen[19] = loadImage("assets/imagenes/pantalla7a.png");
-    imagen[20] = loadImage("assets/imagenes/pantalla7b.png");
-    imagen[21] = loadImage("assets/imagenes/pantalla7c.png");
-    imagen[22] = loadImage("assets/imagenes/pantalla8a.png");
-    imagen[23] = loadImage("assets/imagenes/pantalla8b.png");
-    imagen[24] = loadImage("assets/imagenes/pantalla8c.png");
-    imagen[25] = loadImage("assets/imagenes/pantalla9a.png");
-    imagen[26] = loadImage("assets/imagenes/pantalla9b.png");
-    imagen[27] = loadImage("assets/imagenes/pantalla10a.png");
-    imagen[28] = loadImage("assets/imagenes/pantalla10b.png");
-    imagen[29] = loadImage("assets/imagenes/pantalla10c.png");
-    imagen[30] = loadImage("assets/imagenes/pantalla11a.png");
-    imagen[31] = loadImage("assets/imagenes/pantalla11b.png");
-    imagen[32] = loadImage("assets/imagenes/pantalla11c.png");
+    imagen[2] = loadImage("assets/imagenez/pantalla0.png");
+    imagen[3] = loadImage("assets/imagenez/pantalla1.png");
+    imagen[4] = loadImage("assets/imagenez/pantalla2a.png");
+    imagen[5] = loadImage("assets/imagenez/pantalla2b.png");
+    imagen[6] = loadImage("assets/imagenez/pantalla3a.png");
+    imagen[7] = loadImage("assets/imagenez/pantalla3b.png");
+    imagen[8] = loadImage("assets/imagenez/pantalla4a.png");
+    imagen[9] = loadImage("assets/imagenez/pantalla4b.png");
+    imagen[10] = loadImage("assets/imagenez/pantalla4c.png");
+    imagen[11] = loadImage("assets/imagenez/pantalla5a.png");
+    imagen[12] = loadImage("assets/imagenez/pantalla5b.png");
+    imagen[13] = loadImage("assets/imagenez/pantalla5c.png");
+    imagen[14] = loadImage("assets/imagenez/pantalla5d.png");
+    imagen[15] = loadImage("assets/imagenez/pantalla6a.png");
+    imagen[16] = loadImage("assets/imagenez/pantalla6b.png");
+    imagen[17] = loadImage("assets/imagenez/pantalla6c.png");
+    imagen[18] = loadImage("assets/imagenez/pantalla6d.png");
+    imagen[19] = loadImage("assets/imagenez/pantalla7a.png");
+    imagen[20] = loadImage("assets/imagenez/pantalla7b.png");
+    imagen[21] = loadImage("assets/imagenez/pantalla7c.png");
+    imagen[22] = loadImage("assets/imagenez/pantalla8a.png");
+    imagen[23] = loadImage("assets/imagenez/pantalla8b.png");
+    imagen[24] = loadImage("assets/imagenez/pantalla8c.png");
+    imagen[25] = loadImage("assets/imagenez/pantalla9a.png");
+    imagen[26] = loadImage("assets/imagenez/pantalla9b.png");
+    imagen[27] = loadImage("assets/imagenez/pantalla10a.png");
+    imagen[28] = loadImage("assets/imagenez/pantalla10b.png");
+    imagen[29] = loadImage("assets/imagenez/pantalla10c.png");
+    imagen[30] = loadImage("assets/imagenez/pantalla11a.png");
+    imagen[31] = loadImage("assets/imagenez/pantalla11b.png");
+    imagen[32] = loadImage("assets/imagenez/pantalla11c.png");
 }
 
 function setup() {
@@ -146,7 +147,7 @@ function introCreditos() {
     if (tiempoIntroCreditos == 0) { /*si tiempo creditos no fue llamado empieza a contar el millis desde aca */
         tiempoIntroCreditos = millis();
     }
-    if (millis() - tiempoIntroCreditos > 4900) { /*si pasaron 3 segundos, la pantalla actual se cambio y el tiempo credito vuelve a cero para cuando se reinicie la aventura*/
+    if (millis() - tiempoIntroCreditos > 5000) { /*si pasaron 3 segundos, la pantalla actual se cambio y el tiempo credito vuelve a cero para cuando se reinicie la aventura*/
         pantallaActual = 2;
         tiempoIntroCreditos = 0;
     }
@@ -162,25 +163,29 @@ function creditosFinales() {
         tiempoCreditosFinales = millis();
     }
 
-    if (millis() - tiempoCreditosFinales < 5000) {
+    if (millis() - tiempoCreditosFinales < 7000) {
         text("Basado en la serie:\n" + "Serial Experiments Lain.\n" + "Produccion y co-creacion:\n" + "Yasuyuki Ueda.\n" + "Guion:\n" + "Chiaki J. Konaka.\n" + "Director:\n" + "Ryutaro Nakamura.\n" + "Ilustrador:\n" + "Yoshitoshi ABe.", width / 2, height / 2);
     }
 
     else if (millis() - tiempoCreditosFinales < 13000) {
-        text("Musica y sonido:\n" + "Introduccion extraida de la serie,\n" + "utilizada SOLO con fines educativos y en homenaje.\n" + "El efecto sonoro que acompaña la experiencia\n" + "fue seleccionada de una libreria en linea de uso libre\n", width / 2, height / 2);
+        text("Musica y sonido:\n" + "Introduccion extraida de la serie,\n" + "utilizada SOLO con fines educativos y en homenaje.\n" + "El efecto sonoro que acompaña la experiencia\n" + "fue seleccionada de una libreria en linea de uso libre.\n", width / 2, height / 2);
     }
 
-    else if (millis() - tiempoCreditosFinales < 21000) {
+    else if (millis() - tiempoCreditosFinales < 24000) {
         text("Musica de Creditos:\n" + "Megalomaniac de KMFDM.\n" + "Reconocemos que el uso de material con\n" + "derechos de autor NO debe realizarse sin permiso.\n" + "En este caso, la cancion de creditos fue incorporada\n" + "SOLO con fines educativos.\n", width / 2, height / 2);
     }
 
-    else if (millis() - tiempoCreditosFinales < 29000) {
+    else if (millis() - tiempoCreditosFinales < 31000) {
         text("Recursos visuales:\n" + "La mayoria de las imagenes pertenecen a la serie original.\n" + "Fueron editadas mediante aplicaciones digitales\n" + "y otras generadas con Inteligencia Artificial.\n" + "Su uso se realiza UNICAMENTE con fines educativos\n" + "y de experimentacion visual.", width / 2, height / 2);
     }
 
     else {
         pantallaActual = 2;
         tiempoCreditosFinales = 0;
+
+        if (!intro.isPlaying()){
+            intro.play();
+        }
     }
 }
 
@@ -734,8 +739,10 @@ function mousePressed() {
 
             if (ruiditoz.isPlaying()) {
                 ruiditoz.stop();
+                cancionCreditos.play();
             } else {
                 ruiditoz.play();
+                cancionCreditos.stop();
             }
             return;
         }
@@ -746,8 +753,11 @@ function mousePressed() {
 
             if (ruiditoz.isPlaying()) {
                 ruiditoz.stop();
+                cancionCreditos.play();
             } else {
                 ruiditoz.play();
+                cancionCreditos.stop();
+
             }
             return;
         }
@@ -759,8 +769,10 @@ function mousePressed() {
 
             if (ruiditoz.isPlaying()) {
                 ruiditoz.stop();
+                cancionCreditos.play();
             } else {
                 ruiditoz.play();
+                cancionCreditos.stop();
             }
             return;
         }
