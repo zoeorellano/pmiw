@@ -150,13 +150,10 @@ function introCreditos() {
     textSize(20);
     textAlign(CENTER, CENTER);
 
-<<<<<<< HEAD
+    
     text("Trabajo realizado por:\n" + "Zoe Orellano y Estefania Raffaelli.\n" + "\n" + "Comision 2.\n" + "\n" + "Docente:\n" + "Matias Jauregui Lorda.\n" + "\n" + "Agradecimiento especial:\n" + "A Diego :)\n", width / 2, height / 2);
     if (tiempoIntroCreditos == 0) { /*si tiempo creditos no fue llamado empieza a contar el millis desde aca */
-=======
-    text("Trabajo realizado por:\n" + "Zoe Orellano y Estefania Raffaelli.\n" + "Comision 2.\n" + "Docente:\n" + "Matias Jauregui Lorda.\n" + "Agradecimiento especial:\n" + "A Diego :)\n", width / 2, height / 2);
-    if (tiempoIntroCreditos == 0) { 
->>>>>>> a4e82007817454785231525cc93e5a3abd1222b3
+                tiempoIntroCreditos = millis();
         tiempoIntroCreditos = millis();
     }
     if (millis() - tiempoIntroCreditos > 5000) { 
